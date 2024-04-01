@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# 프로젝트 생성
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. 기본사항
+- 깃허브에 먼저 소문자로 프로젝트명을 만든다.
+- 깃허브에 설명은 반드시 작성한다.
+- PC에 동일한 소문자로 폴더를 만든다.
 
-## Available Scripts
+### 1.1. 리액트 및 퍼블리싱 프로젝트 생성
+- VSCode를 실행한다.
+- PC에 만든 폴더를 드래그 해서 등록한다.
+- 명령어를 통하여 기본 파일럿 프로젝트를 생성한다.
+ : `npm create-react-app ./`를 실행한다.
+ : Node.js 권장 설치버전 (https://nodejs.org/en/download)
+ : Node.js는 20.12.0 (LTS) 버전을 선택.
+ : 설치는 기본 경로 그대로 설치. 다른 경로에 설치할 시 오류 발생 가능성 있음.
+ : npm 오류가 발생할 시 에러 넘버 구글링 (ex. -4058 Error)
+ : `npm uninstall -g create-react-app`
+ : `npm install -g create-react-app`
+ : 위와 같은 오류 발생시 위의 사항을 실행한 후
+ : `npm create-react-app ./`를 실행한다.
 
-In the project directory, you can run:
+### 1.2. 테스트 해보기
+- `npm run start` 실행해서 확인한다.
+- 터미널에서 `ctrl + C`로 미리보기 종료한다.
 
-### `npm start`
+## 2. 작업순서 기준
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 2.1. 웹 서비스 개발 순서(프론트)
+- 퍼블리싱부터 진행
+- 리액트 진행 (필요시)
+- 타입스크립트 진행 (필요시)
+- Next.js 진행 (필요시)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2.2. 퍼블리싱 해보기
+- 생성된 폴더 최상위를 `Root` 라고 부른다.
+- 코드상으로는 `/` 로 표현.
+- 퍼블리싱은 `/public` 폴더에 `www` 폴더 생성후 진행.
+- 퍼블리싱 기본 폴더 생성 진행.
+ : images 폴더 생성 (.png, .jpg, .gif, .svg )
+ : css 폴더 생성 (.css 파일들을 보관)
+ : js 폴더 생성 (.js 파일들을 보관)
+ : assets 폴더 생성 (문서, 동영상, 디자인 원본(.psd)...)
+ : index.html 파일 생성
 
-### `npm test`
+### 2.3. index.html 기본구성
+- `! + Tab` html 기본형이 제공된다. (스냅샷)
+- lang="en"은 "ko"로 수정한다.
+- title은 변경.
+- 미리보기 (html 파일에서 마우스 오른쪽 Open With Live Server 선택)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카카오 브레인 블로그</title>
+</head>
+<body>
+    
+</body>
+</html>
+```
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 2.4. html 문서의 작업 순서
