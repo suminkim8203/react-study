@@ -449,3 +449,424 @@ window.addEventListener("load", function () {
   width: 20px !important;
 }
 ```
+
+# js 4장
+
+- var 변수명 = 변수값;
+- let 변수명 = 변수값;
+- const 변수명 = 변수값;
+
+```txt
+호이스팅(hoisting)
+⇒변수 선언문이 코드의 선두로 끌어 올려진 것처럼 동작하는 자바스크립트 고유의 특징
+
+: 변수, 함수를 선언하지 않았음에도 오류 없이 사용할 수 있다.
+: 추후 코드에 오류 발생 가능성이 높음
+: hoisting이 일어나지 않도록 주의 (var를 사용하지 말자.)
+```
+
+# css의 opacity와 position의 이해.
+
+- opacity는 DOM의 내용까지 투명도가 적용된다.
+
+- position
+  : position 중에 absolute로 픽셀 위치 설정의 경우 주의할 것.
+  : 반드시 position 코드가 바깥 영역에도 있어야 한다.
+  : position 중에 fixed는 웹 브라우저를 기준으로 배치
+  : fixed는 반드시 left, top, right, bottom을 주자
+  : fixed는 보통 z-index를 준다.
+  : fixed는 높이에 반영이 안 되므로 주의하자. (레이아웃 배치 문제)
+
+```css
+대상 {
+  position: relative;
+}
+대상 {
+  position: absolute;
+}
+대상 {
+  position: fixed;
+}
+```
+
+- 주의사항
+
+```css
+.box-wrap {
+  position: relative;
+  margin: 0 auto;
+  width: 600px;
+  height: 300px;
+  background: orange;
+}
+.box {
+  position: absolute;
+  right: 80px;
+  bottom: 20px;
+
+  width: 200px;
+  height: 200px;
+  background: red;
+}
+```
+
+# js 윈도우 스크롤의 위치 알아내기
+
+```js
+window.addEventListener("scroll", function () {
+  // 하고 싶은 일
+});
+```
+
+```js
+window.addEventListener("scroll", function () {
+  // 스크롤바의 위치
+  const scY = window.scrollY;
+});
+```
+
+# js로 css의 클래스 동적으로 활용하기
+
+```js
+// DOM 찾아서 변수로 레퍼런스 하기
+const tags = document.querySelector(".클래스명");
+// DOM을 이용해서 선택한 곳에 적용된 css 클래스 목록 추가
+tags.classList.add("클래스명");
+// DOM을 이용해서 선택한 곳에 적용된 css 클래스 목록 제거
+tags.classList.remove("클래스명");
+// DOM을 이용해서 선택한 곳에 적용된 css 클래스 목록 추가/제거
+tags.classList.toggle("클래스명");
+// DOM을 이용해서 선택한 곳에 적용된 css 클래스 목록 포함여부
+tags.classList.contain("클래스명");
+```
+
+# js의 함수란? 1.
+
+- 동일한 코드가 2번 이상 반복되면 함수를 만들려고 노력하자.
+- 반복은 되지 않더라도 하나의 기능이 너무 복잡하면 함수를 만들려고 노력하자.
+- 복잡하진 않지만 코드가 너무 길어지면 함수로 묶어주려고 노력하자.
+- 실행의 결과가 그때그때 다른 경우에도 함수를 만들자.
+
+```js
+// 함수 선언 (함수 만들기)
+function 적절한 이름_동사(){
+  // 하고 싶은 일 작성
+}
+// 함수 호출 (함수 사용하기)
+적절한 이름_동사();
+// ex) 함수 체이닝
+fetch().then().then().catch();
+```
+
+- 함수는 무조건 1개의 값을 리턴하도록 규정되어 있습니다.
+- 리턴이라는 것은 함수 실행 후 값을 돌려주는 것을 말합니다.
+
+```js
+function 함수명() {
+  // 정의하지 않으면 몰래 return undefined; 를 작성함!
+}
+함수명();
+```
+
+# JS 5장
+
+```txt
+
+표현식과 문
+
+값(value)은 표현식이 평가된 결과
+
+- 값?
+  : 변수에 할당된 결과
+  코딩에서 값이라고 할 수 있는 것은 변수에 할당(보관)된 결과를 말한다.
+- 변수?
+  : 컴퓨터 공간에 이름을 붙여둔 방 한 개
+- 평가?
+  : 식을 해석해서 값을 생성하고 참조하는 것
+
+var sum = 10 + 20;
+// 변수 sum에 할당되는 것은 10 + 20이 아니라, 결과값인 30이다.
+
+리터럴 literal?
+
+사람이 이해할 수 있는 문자 또는 약속된 기호를 사용해서 값을 생성하는 표기법
+
+- 3은 단순한 아리비아 숫자 3이 아니라, 숫자 리터럴 3이라고 한다.
+
+리터럴은 값을 평가해서 코드에 활용하기 위한 문법
+
+표현식 expression
+
+**리터럴 값으로 평가될 수 있는 문은 모두 표현식이다.**
+
+메모리 할당 이전에 리터럴이 일어나고, 할당 이후에 expression 되었다고 한다.
+
+문 (statement)
+: 프로그램을 구성하는 최소 기본/최소 실행 단위
+
+{} 범위, 영역
+
+```
+
+# js의 함수란? 2.
+
+- 동일한 코드가 2번 이상 반복되면 함수를 만들려고 노력하자.
+- 반복은 되지 않더라도 하나의 기능이 너무 복잡하면 함수를 만들려고 노력하자.
+- 복잡하지는 않는데 코드가 너무 길어지면 함수로 묶어주려고 노력하자.
+- 실행의 결과가 그때, 그때 다른 경우에도 함수를 만들자.
+- 함수 정의 문
+
+```js
+function 함수이름() {
+  // 할 일
+}
+```
+
+- 함수 실행/호출(call) 문
+
+```js
+함수이름();
+```
+
+# js 함수의 매개변수란? 3번
+
+- 초기 기능, 즉 함수를 정의하기 전에 기능상 자주 변하는 데이터를 고민한다.
+- 기능은 스크롤시 특정 위치보다 커지면 css 추가하기
+- 이전 코드는 좋지 않은 코드라고 생각이 든다.
+- 함수는 스스로 지역, 즉 Local 영역(Scope)에서 처리되는 것이 좋다고 본다.
+- **처리**라는 말은, 변수를 찾거나 잘못된 값이 전달되어서 오류가 나는 것을 방지하는 것을 말한다.
+
+```js
+// 홍길동에게 줄 함수
+const a = 5;
+const b = 0;
+
+function 나누기(_num1, _num2) {
+  if (_num2 === 0) {
+    alert("나눗셈에서 0은 안 됩니다.");
+  }
+  return _num1 / _num2;
+}
+나누기(a, b);
+```
+
+# js 6장
+
+```txt
+데이터 타입(Data Type): 자료형
+
+타입이라는 말 = 자료의 형태
+
+불변성(immutable)
+: 데이터 값이 변경될 수 없다.
+
+- 데이터는 immutable 해야 한다.
+- 상태(state)는 immutable 해야 한다.
+
+가변성(mutable)
+: 데이터 값이 변경될 수 있다.
+
+원시데이터 6가지는 immutable 한 데이터 타입이다.
+
+- number   1
+- string   'a’
+- undefined   undefined
+- boolean   true, false
+- null   null
+- symbol   Symbol() 만들어진 값은 변경 불가
+
+복합형 데이터 객체
+
+객체는 원시데이터를 모아서 저장하고 관리하는 것.
+
+JS의 리터럴로 처리될 수 있는 자료의 종류
+
+타입 스크립트?
+: 데이터 종류를 표현해주는 방식
+: 자료의 형태를 설명하는 문법
+
+표현식?
+: 값을 만들어 담고 돌려주는것
+
+undefined와 null의 차이
+
+const a = undefined; // 값을 만들지 않음
+
+const b = null; // 개발자가 값이 비어있음을 선언
+
+Symbol은 중복되지 않는다고 보장하는 값 타입
+
+**중요단어**
+
+1. 데이터 타입: 자료(리터럴 값)의 종류
+2. js에서는 값 리터럴에 따라 변수의 종류를 타입추론 한다.
+3. 타입을 추측해서 프로그래머에게 물어보지 않고 타입을 변경한다. (암묵적 타입변경)
+
+    let a = 1;
+
+    a = “안녕”;
+
+
+2, 3번은 언젠간 원하지 않는 결과가 실행된다.
+의도하지 않은 오류를 일으킴.
+
+TypeScript
+
+let a:number = 1;
+
+a = “안녕”; // 오류 발생
+
+**코딩 가이드**
+
+1. 꼭 필요한 경우인지 파악하고 변수를 만들자.
+2. 변수 유효 범위는 좁게 (블록을 가능하면 쓰자) :스코프
+3. 전역 변수는 가능하면 만들지 말자.
+4. 변수는 상수를 사용하자. (가능하면 const로 만들자)
+5. 변수는 의미 있는 이름을 짓자.
+```
+
+# 함수의 이해 7번
+
+- 동일한 코드가 2번 이상 반복되면 함수를 만들려고 노력하자.
+- 반복은 되지 않더라도 하나의 기능이 너무 복잡하면 함수를 만들려고 노력하자.
+- 복잡하지는 않는데 코드가 너무 길어지면 함수로 묶어주려고 노력하자.
+- 실행의 결과가 그때, 그때 다른 경우에도 함수를 만들자.
+
+2. 왜 화살표 함수를 만들지?
+
+- 트랜드를 쫓아가자.
+- this 를 정확히 지정하기 위해서 활용하면
+- 코드가 해석하기 더 어려워진다.
+
+```js
+function say() {
+  console.log("안녕", this);
+}
+```
+
+: step 1.
+
+```js
+say() => {
+  console.log("안녕", this);
+}
+```
+
+: step 2.
+
+```js
+const say = () => {
+  console.log("안녕", this);
+};
+```
+
+: 매개 변수가 있는 경우
+
+```js
+function say(_who) {
+  console.log("안녕", _who, this);
+}
+```
+
+: step 1.
+
+```js
+function say(_who) {
+  console.log("안녕", _who, this);
+}
+```
+
+: step 2.
+
+```js
+const say = (_who) => {
+  console.log("안녕", _who, this);
+};
+```
+
+- this 를 정확히 지정하기 위해서 활용된다.
+  : 화살표 함수를 사용할 때 일반적으로 큰 고민없이 사용하면 되지만,
+  : 함수 안에 this를 작성하면 상황이 달라진다.
+  : 화살표 함수에서 this는 window를 가리킨다.
+  : 결론. 화살표 함수에서 this를 사용한다면 console.log(this); 확인 필수!
+  : 화살표 함수는 예전 일반 함수에서 window를 참조하지 못하는 문제를 해결한다.
+
+```js
+// this의 차이
+const btWrap = document.querySelector(".bt-wrap");
+// 일반 함수는 작성된 곳을 가리키고
+btWrap.addEventListener("click", function () {
+  console.log(this);
+});
+// 화살표 함수는 window를 가리킨다.
+btWrap.addEventListener("click", () => {
+  console.log(this);
+});
+```
+
+# 배열의 이해
+
+- [요소, 요소, 요소, 요소]
+  : 요소로 담을 수 있는 자료형은 7가지.
+- 배열의 속성(배열을 위한 특별한 변수)는 1개가 있다.
+  : length 가 있다. (요소의 개수)
+- 배열의 메소드(배열을 위한 특별한 함수)는 정말 많다.
+- 상당히 많은 메소드(배열을 위한 함수)가 있다.
+- 배열.forEach((요소)=>{}), 배열.map((요소)=>{}), 배열.filter((요소)=>{}), 배열.find((요소)=>{})
+- 배열의 요소를 하나씩 접근해서 활용하기
+- 카멜케이스를 사용해야 한다. ( 배열.forEach() )
+
+```js
+// html 을 제어하므로
+window.addEventListener("load", function () {
+  //할일
+  const dataUrl = "./apis/news.json";
+  fetch(dataUrl)
+    .then((response) => {
+      //   console.log(response);
+      const result = response.json();
+      return result;
+    })
+    .then((result) => {
+      //   console.log(result);
+      // 할일작성
+      // 전체 html 저장용 일반 변수
+      let allTag = "";
+      const news = document.querySelector("#news");
+
+      // for (let i = 0; i < result.length; i++) {
+      //   const obj = result[i];
+      //   const tag = `<a href=${obj.link} class="list-box">
+      //     <div class="list-box-img br-20" style="background: url('./images/${obj.imgpath}') no-repeat center; background-size: cover"></div>
+      //     <div class="list-box-cate">
+      //       <img src="./images/icon/${obj.icon}" alt="${obj.category}" />
+      //       <span style="color:${obj.txtcolor};">${obj.category}</span>
+      //     </div>
+      //     <p class="list-box-title">${obj.title}</p>
+      //     <span class="list-box-day">${obj.day}</span>
+      //   </a>`;
+
+      //   allTag = allTag + tag;
+      // }
+
+      // 배열이라면 반복하자.
+      result.forEach((item) => {
+        const tag = `<a href=${item.link} class="list-box">
+        <div class="list-box-img br-20" style="background: url('./images/${item.imgpath}') no-repeat center; background-size: cover"></div>
+        <div class="list-box-cate">
+          <img src="./images/icon/${item.icon}" alt="${item.category}" />
+          <span style="color:${item.txtcolor};">${item.category}</span>
+        </div>
+        <p class="list-box-title">${item.title}</p>
+        <span class="list-box-day">${item.day}</span>
+        </a>`;
+        allTag = allTag + tag;
+      });
+
+      news.innerHTML = allTag;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+```
