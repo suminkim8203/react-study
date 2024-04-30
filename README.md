@@ -1275,3 +1275,265 @@ say : ( ) { }
 
 - 반드시 저작권을 밝혀야 한다.
 - 첫 화면만 연습하면 된다. (첫 화면이 가장 난이도가 높기 때문.)
+- 리액트 작업
+
+# js 10장
+```txt
+11. 원시값과 객체의 비교
+값을 비교
+
+참조를 비교
+
+얕은 복사 / 깊은 복사
+
+1 = 1 (변경불가)
+
+false = false (변경불가)
+
+객체는 변경가능
+
+객체리터럴 {…}
+
+const obj = { age : 1 }
+
+obj.age = 2;
+
+obj [”age”] = 3;
+
+값을 전달한다. →일반 변수
+
+let age = 15;
+
+let old = age;
+
+age = 200
+
+old (?)
+
+참조 위치를 전달한다. → 객체 변수 
+
+일반 변수는 값을 보관한다. (값)
+
+객체 변수는 실제 값이 아닌, 데이터의 위치를 보관한다. (참조)
+
+const age = 1;
+
+const name = “hong”;
+
+const marry = false;
+
+const gogo = age;
+
+const hi = name;
+
+const who = { } ←값x 객체라서 값이 아니고 위치 참조라고 한다.
+
+const you = who
+
+⇒그래서 who.age 값을 변경하면 you의 age 값까지 함께 변한다.
+
+이를 얕은 복사라고 한다.
+
+값을 복사하는 게 아니라 장소, 주소만 복사
+
+얕은 복사
+: 일반 값을 복사해서 변경한다.
+
+깊은 복사
+: 참조 값을 복사해서 변경한다.
+
+const 강의실 = “506호”;
+
+const 교실 = 강의실;
+
+강의실 = 5000
+
+const 강의실 = { 번호: “506호” };
+
+const 교실 = 강의실.번호;
+
+강의실.번호 = 5000
+
+const 리액트반 = { member: 16 }
+
+function 학생수(과정) {
+
+과정.member = 100;
+
+}
+
+const 리액트반 = { {…리액트반} }
+
+… ← 뜯어와라…
+
+const 리액트반 = { member: 16 }
+
+const 과정 = { …리액트반 };
+
+const 과정 = { member: 16 };
+
+일반 변수는 값이 보관되고, 값이 복사된다.
+
+객체 변수는 주소가 보관되고, 주소가 복사된다.
+
+: 객체를 복사하는 것은 주의하자. (얕은 복사)
+
+: 가능하면 객체는 깊은 복사를 활용하도록 노력하자.
+```
+
+
+# Git 협업 과정 (순서를 꼭 지키자)
+
+```txt
+
+
+   - 팀원은 PC 에서 브랜치를 생성한다. !!!!!!
+     git branch 아이디
+
+   - 팀원은 PC 에서 브랜치로 이동한다.
+      git switch 아이디
+
+   - 리액트 프로젝트라서 js 소스들을 다운로드 및 설치 하셔야 해요
+      npm i
+
+   - 팀원은 PC 에서 작업하고
+      git add .
+      git commit
+      git push 아이디
+
+   - 팀원은 GitHub 에서 브랜치 확인 후 pull Request 요청한다.
+
+   - 팀원은 대기한다.
+
+   - 팀장은 pull Request 요청을 처리한다.
+
+   - 팀장은 요청에 대해 처리후 feedback (슬랙) 준다.
+
+   - 팀장이 소스 merge 끝났습니다. sync 받으셔요.
+
+   - 팀원은 본인 깃허브 sync fork 클릭합니다.
+
+   - 팀원은 작업 brach 제거한다.
+     : git switch main
+     : git branch -D 아이디
+
+   - 팀원은 sync 이후에 소스를 다시 받는다.
+     : git fetch
+     : git merge origin/main
+```
+
+# js 12장
+```txt
+12. 함수
+원시 데이터 ==⇒ 단일 값
+
+복합 데이터 : 복잡한 속성, 메서드를 가진 객체 ==⇒ function, [ ], { }…
+
+함수는 객체다
+
+→ 함수는 객체의 문법을 따르는 값이다.
+
+함수는 복합 데이터 형태의 값이다.
+
+function 함수이름 (매개 변수) {
+
+return 문장을 작성 (값을 반드시 출력: 표현식)
+
+}
+
+함수이름(인자) : 함수 호출, 함수 실행, 함수 콜…
+
+리터럴?
+: 할당된 값. ex) let a= 1; 1: 리터럴
+→ js가 알아볼 수 있는 데이터 형태로 작성한 것.
+
+const a =1; 숫자 리터럴
+
+JS의 일급객체에 대해 말해보자.
+
+1. 값처럼 변수에 할당할 수 있는가?
+    1. const add = function( ) { }
+2. 객체의 프로퍼티의 값으로 담을 수 있는가?
+    1. const obj = { add : function ( ) }
+3. 배열의 값으로 담을 수 있는가?
+    1. const arr = [ 1, 2, 3, 4, 5, function( ) { }, { }, [ ] ]
+4. 함수의 매개변수 값으로 전달할 수 있는가?
+    1. function say ( 기능 ) {
+        
+        기능( );
+        
+        }
+        
+    
+    const 안녕 = function( ) { 
+    
+    console.log(”안녕하세요”)
+    
+    }
+    
+    say (안녕)
+    
+    say ( function( ) { console.log(”반가워요”) } )
+    
+- 함수가 객체를 생성하는 함수를 객체 생성자 함수라고 한다.
+- JS의 함수에 전달되는 매개변수 목록을 arguments 라는 객체라고 한다.
+- 함수의 매개변수로
+    - 1. 원시 값을 인자로 전달하는 경우
+    const age = 15;
+    function grow ( _value ) {
+       return _value + 5;
+    }
+    grow ( age );
+    
+    age는 변화가 없다. 값인 115가 전달된 것이지 age가 전달된 것이 아니기 때문.
+    
+    - 2. 함수의 객체를 인자로 전달하는 경우 (조심해야 하는 경우!)
+    const person = { age : 10 }
+    function growObj ( _who ) {
+       _who.age = 150;
+    }
+    
+    // 객체의 참조(주소) 값 전달
+    growObj ( person );
+    
+    // 객체의 상태가 변경이 일어난다.
+
+중첩 함수
+
+function Outer ( ) {
+
+function handelClick = ( ) ⇒ {
+
+}
+
+hanelClick ( );
+
+return ( JSX 구문 )
+
+;
+
+콜백 함수
+
+window.addEventListener ( “이벤트글자”, function( ) { } )
+
+순수 함수
+
+function add (a, b) {
+
+return a + b;
+
+}
+
+비순수 함수
+
+const age = 10;
+
+function add (b) {
+
+return age + b;
+
+}
+```
+
+
+
